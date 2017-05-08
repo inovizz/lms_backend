@@ -1,8 +1,9 @@
 {
-    "name": "lms_backend",
-    "main": "server.js",
-    "dependencies": {
-        "express": "~4.0.0",
-        "body-parser": "~1.0.1"
-    }
+  "name": "lms_backend",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "~1.0.1",
+    "express": "~4.0.0",
+    "request": "^2.81.0"
+  }
 }
