@@ -8,6 +8,8 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var request = require('request');
+var bcrypt = require('bcrypt');
+var salt = bcrypt.genSaltSync(10);
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -37,6 +39,9 @@ router.route('/create_account')
     // create an account
     .post(function(req, res) {
     	console.log(req.body);
+    	var hash = bcrypt.hashSync(req.body.params[0], salt);
+    	req.body.params[0] = hash;
+    	console.log(req.body);
 	    request({
 	       url: 'http://localhost:8545',
 	       method: 'POST',
@@ -55,7 +60,6 @@ router.route('/create_account')
 		           });
 		       }
 	   });
-
     });
 
 // REGISTER OUR ROUTES -------------------------------
